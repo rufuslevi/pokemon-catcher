@@ -28,7 +28,7 @@ end
 if arg[1] == "score" then
 	scoreHandler.printScore()
 elseif arg[1] == "catch" then
-	catchHandler.catch(arg[1], processShinyGuess(arg[2]))
+	catchHandler.catch(arg[2], processShinyGuess(arg[3]))
 else
 	genHandler.initNewPokemon(arg[1])
 end

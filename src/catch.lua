@@ -51,16 +51,7 @@ local function computeAndPrintResult(currentScore, name, isShiny)
 		print("\nBetter luck next time!")
 	elseif name == trueName and isShiny == isReallyShiny then
 		print("\nLet's see it again!")
-		local command = commandHandler.command({
-			settings = {
-				name = trueName,
-				isRandom = false,
-				isShiny = isReallyShiny,
-				isBig = true,
-				generation = false,
-				toStore = false,
-			},
-		})
+		local command = commandHandler.command:new(string.lower(trueName), false, isReallyShiny, false, false)
 
 		command:build()
 		command:execute()

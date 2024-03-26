@@ -8,7 +8,7 @@ local function generateRandomPokemonData(generation)
 		isShiny = false
 	end
 
-	local command = commandHandler.command:new("", true, isShiny, false, generation, true)
+	local command = commandHandler.command:new("", true, isShiny, generation, true)
 	command:build()
 	command:execute()
 end
