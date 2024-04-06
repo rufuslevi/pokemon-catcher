@@ -21,6 +21,7 @@ local function updateScore(newScore)
 	if not scoreFile then
 		return
 	end
+
 	scoreFile:write(tostring(newScore))
 	scoreFile:close()
 end

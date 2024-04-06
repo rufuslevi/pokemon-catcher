@@ -1,9 +1,13 @@
+local catchHandler = require("catch")
+local genHandler = require("gen")
+local scoreHandler = require("score")
+
 DEBUG = false
 PWD = arg[0]:sub(1, -13)
 BIN_PATH = PWD .. "bin/"
 package.path = PWD .. "src/?.lua;" .. package.path
 
-local function processShinyGuess(guess)
+local function processShinyInput(guess)
 	local shinyGuess = nil
 	if guess == "true" or guess == "t" then
 		shinyGuess = true
@@ -13,10 +17,6 @@ local function processShinyGuess(guess)
 
 	return shinyGuess
 end
-
-local catchHandler = require("catch")
-local genHandler = require("gen")
-local scoreHandler = require("score")
 
 if DEBUG then
 	for _, args in pairs(arg) do
@@ -28,7 +28,8 @@ end
 if arg[1] == "score" then
 	scoreHandler.printScore()
 elseif arg[1] == "catch" then
-	catchHandler.catch(arg[2], processShinyGuess(arg[3]))
+	local shinyGuess = processShinyInput(arg[3])
+	catchHandler.catch(arg[2], shinyGuess)
 else
 	genHandler.initNewPokemon(arg[1])
 end
