@@ -1,11 +1,11 @@
-local catchHandler = require("catch")
-local genHandler = require("gen")
-local scoreHandler = require("score")
-
 DEBUG = false
 PWD = arg[0]:sub(1, -13)
 BIN_PATH = PWD .. "bin/"
 package.path = PWD .. "src/?.lua;" .. package.path
+
+local catchHandler = require("catch")
+local genHandler = require("gen")
+local scoreHandler = require("score")
 
 local function processShinyInput(guess)
 	local shinyGuess = nil
